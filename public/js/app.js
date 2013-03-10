@@ -8,10 +8,7 @@ $(function(){
       $('#alerts tbody').append('<tr><td>' + evt.data + '</td></tr>');
     }
     msg = evt.data;
-    //for (i=0;i<a.length;i++) { console.log(a.charCodeAt(i)); }
-    //var obj = jQuery.parseJSON(msg);
     var obj = json_parse(msg);
-    alert(obj.severity);
   };
 
   ws.onclose = function() {
