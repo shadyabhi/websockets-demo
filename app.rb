@@ -25,6 +25,7 @@ EM.run do
 
         queue.bind(exchange, :routing_key => "").subscribe(:ack => true) do |headers, payload|
           ws.send payload.to_s
+          puts payload
           $channel.acknowledge(headers.delivery_tag, false)
         end
       end
