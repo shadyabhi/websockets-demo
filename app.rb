@@ -18,7 +18,7 @@ EM.run do
 
   EventMachine::WebSocket.start(:host => '0.0.0.0', :port => 8080) do |ws|
     ws.onopen {
-      AMQP.start(:host => "slant.directi.com") do |connection|
+      AMQP.start(:host => "slant.ops.directi.com") do |connection|
         $channel = AMQP::Channel.new(connection)
         exchange = $channel.fanout("slant", :auto_delete => false, :durable => true)
         queue    = $channel.queue("slant-events", :auto_delete => false, :durable => true)
